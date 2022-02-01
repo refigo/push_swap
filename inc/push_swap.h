@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/01 13:49:39 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/01 14:31:18 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,18 @@ malloc
 free
 exit
 */
+
+typedef struct s_doubly_linked
+{
+	int		num;
+
+	char	*test;
+
+	void	*prev;
+	void	*next;
+}				t_doubly_linked;
+
+// test_ps.c
+void	test_doubly_linked(t_doubly_linked *stack);
 
 #endif
