@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/01 13:49:39 by mgo              ###   ########.fr       */
+/*   Created: 2021/05/16 13:27:54 by mgo               #+#    #+#             */
+/*   Updated: 2021/05/16 13:32:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "libft.h"
-
-# include <stdio.h>
-
-/*
-- Allowed functions
-
-write
-read
-malloc
-free
-exit
-*/
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

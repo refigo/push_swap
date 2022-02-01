@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/01 13:49:39 by mgo              ###   ########.fr       */
+/*   Created: 2021/05/11 12:34:28 by mgo               #+#    #+#             */
+/*   Updated: 2021/05/13 20:14:58 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "libft.h"
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*uc_s1;
+	unsigned char	*uc_s2;
 
-# include <stdio.h>
-
-/*
-- Allowed functions
-
-write
-read
-malloc
-free
-exit
-*/
-
-#endif
+	uc_s1 = (unsigned char *)s1;
+	uc_s2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if ((uc_s1[i] == '\0') || (uc_s1[i] != uc_s2[i]))
+			return (uc_s1[i] - uc_s2[i]);
+		i++;
+	}
+	return (0);
+}

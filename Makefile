@@ -6,11 +6,11 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/01 13:44:22 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/01 13:50:29 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	push
+NAME		=	push_swap
 CC			=	gcc
 #CFLAGS		=	-Wall -Wextra -Werror
 CDEBUG		=	-fsanitize=address -g
