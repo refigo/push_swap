@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/01 14:43:26 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/07 16:34:42 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_doubly_linked	*make_and_get_linked(t_doubly_linked **stack)
 {
 	t_doubly_linked	*current;
 
+	// todo: input exception
 	if (!(*stack))
 	{
 		current = ft_calloc(1, sizeof(t_doubly_linked));	//todo: exception

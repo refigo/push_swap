@@ -6,11 +6,16 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/01 14:50:59 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/07 16:47:26 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	test_input_arguments()
+{
+
+}
 
 void	test_doubly_linked(t_doubly_linked *stack)
 {
