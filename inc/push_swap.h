@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 12:50:15 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 14:08:46 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ typedef enum e_bool
 typedef struct s_dbly_lnkd
 {
 	int		num;
-
-	char	*test;
-
 	void	*prev;
 	void	*next;
 }				t_dbly_lnkd;
@@ -52,6 +49,13 @@ typedef struct s_push_swap
 	t_dbly_lnkd	*stack_a;
 	t_dbly_lnkd	*stack_b;
 }				t_push_swap;
+
+// set_data.c
+void	set_data(t_push_swap *data, char **argv);
+
+// exit.c
+void	exit_error_msg(char *msg);
+void	exit_error_2msg(char *msg1, char *msg2);
 
 // test_ps.c
 void	test_dbly_lnkd(t_dbly_lnkd *stack);

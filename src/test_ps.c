@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 12:43:17 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 14:08:26 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	test_dbly_lnkd(t_dbly_lnkd *stack)
 	tmp = stack;
 	while (tmp)
 	{
-		printf("[%s]", tmp->test);
+		printf("[%d]", tmp->num);
 		tmp = tmp->next;
 	}
 	printf("\n");
@@ -46,7 +46,7 @@ void	test_dbly_lnkd(t_dbly_lnkd *stack)
 		tmp = tmp->next;
 	while (tmp)
 	{
-		printf("[%s]", tmp->test);
+		printf("[%d]", tmp->num);
 		tmp = tmp->prev;
 	}
 	printf("\n");
