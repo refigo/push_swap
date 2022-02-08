@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 15:20:18 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 15:23:54 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,22 @@
  * there are duplicates
  */
 
-int	check_sign(char *str, int *index)
+static void	check_num_duplicated(t_dbly_lnkd *stack, int num_being_checked)
+{
+	t_dbly_lnkd	*tmp;
+
+	if (stack == NULL)
+		return ;
+	tmp = stack;
+	while (tmp)
+	{
+		if (tmp->num == num_being_checked)
+			exit_error_msg("Error\n");
+		tmp = tmp->next;
+	}
+}
+
+static int	check_sign(char *str, int *index)
 {
 	int	ret_flag_minus;
 
@@ -34,7 +49,7 @@ int	check_sign(char *str, int *index)
 	return (ret_flag_minus);
 }
 
-int	get_atoi_valid(char *str)
+static int	get_atoi_valid(char *str)
 {
 	long long	ret_num;
 	int			flag_minus;
@@ -58,22 +73,7 @@ int	get_atoi_valid(char *str)
 	return ((int)ret_num);
 }
 
-void	check_num_duplicated(t_dbly_lnkd *stack, int num_being_checked)
-{
-	t_dbly_lnkd	*tmp;
-
-	if (stack == NULL)
-		return ;
-	tmp = stack;
-	while (tmp)
-	{
-		if (tmp->num == num_being_checked)
-			exit_error_msg("Error\n");
-		tmp = tmp->next;
-	}
-}
-
-t_dbly_lnkd	*get_stack_with_args(char **argv)
+static t_dbly_lnkd	*get_stack_with_args(char **argv)
 {
 	t_dbly_lnkd	*ret_stack;
 	char		**splitted;
