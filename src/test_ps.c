@@ -6,26 +6,32 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/07 16:47:26 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 12:43:17 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	test_input_arguments()
+void	test_new_lnkd(t_dbly_lnkd *new)
 {
+	printf("-- test_new_lnkd\n");
+
+	printf("new->num: [%d]\n", new->num);
+
+	printf("-- done new_lnkd\n");
 
 }
 
-void	test_doubly_linked(t_doubly_linked *stack)
+void	test_dbly_lnkd(t_dbly_lnkd *stack)
 {
-	t_doubly_linked	*tmp;
+	t_dbly_lnkd	*tmp;
 	char			*test;
 
 	if (!stack)
 		return ;
 
-	printf("-- test_doubly_linked\n");		
+	printf("-- test_dbly_lnkd\n");		
+
 	tmp = stack;
 	while (tmp)
 	{
@@ -44,5 +50,22 @@ void	test_doubly_linked(t_doubly_linked *stack)
 		tmp = tmp->prev;
 	}
 	printf("\n");
-	printf("-- done\n");
+
+	printf("-- done dbly_lnkd\n");
+}
+
+void	test_t_push_swap(t_push_swap *data)
+{
+	printf("-- test_t_push_swap\n");		
+
+	printf("data->stack_a: [%p]\n", (data->stack_a));
+	printf("data->stack_b: [%p]\n", (data->stack_b));
+
+	printf("-- done t_push_swap\n");
+}
+
+void	test_mgo()
+{
+	printf("INT_MIN: [%d]\n", INT_MIN);
+	printf("INT_MAX: [%d]\n", INT_MAX);
 }
