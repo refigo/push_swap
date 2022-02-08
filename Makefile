@@ -6,7 +6,7 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/08 13:11:05 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/08 14:42:12 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJ_LIST	=	$(SRC_LIST:.c=.o)
 OBJ			=	$(addprefix $(OBJ_PATH), $(OBJ_LIST))
 
 $(NAME)	:	$(OBJ) libft
-	$(CC) $(CDEBUG) $(OBJ) $(INC_LINK) $(LIBFT) -o $(NAME)
+	$(CC) $(CDEBUG) $(CFLAGS) $(OBJ) $(INC_LINK) $(LIBFT) -o $(NAME)
 
 $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true

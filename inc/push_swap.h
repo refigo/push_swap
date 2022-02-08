@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 14:08:46 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 14:32:55 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void	exit_error_2msg(char *msg1, char *msg2);
 // test_ps.c
 void	test_dbly_lnkd(t_dbly_lnkd *stack);
 void	test_t_push_swap(t_push_swap *data);
+void	test_leaks(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 14:15:27 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 14:32:01 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	check_num_duplicated(t_dbly_lnkd *stack, int num_being_checked)
 			exit_error_msg("Error\n");
 		tmp = tmp->next;
 	}
-	return ;
 }
 
 t_dbly_lnkd	*make_new_lnkd(int num)
@@ -96,7 +95,6 @@ void	add_new_lnkd_back(t_dbly_lnkd **stack, int num)
 t_dbly_lnkd	*get_stack_with_args(char **argv)
 {
 	t_dbly_lnkd	*ret_stack;
-	t_dbly_lnkd	*new;
 	char		**splitted;
 	int			num_arg;
 	int			i;
@@ -107,7 +105,6 @@ t_dbly_lnkd	*get_stack_with_args(char **argv)
 	while (argv[++i])
 	{
 		splitted = ft_split(argv[i], ' ');
-		//test_splitted(splitted);
 		if (!splitted)
 			exit_error_msg("Error: malloc failed\n");
 		j = -1;
@@ -118,7 +115,7 @@ t_dbly_lnkd	*get_stack_with_args(char **argv)
 			printf("num_arg: [%d]\n", num_arg);
 			add_new_lnkd_back(&ret_stack, num_arg);
 		}
-
+		mgo_free_2ptr(splitted);
 	}
 
 	test_dbly_lnkd(ret_stack);
@@ -128,11 +125,7 @@ t_dbly_lnkd	*get_stack_with_args(char **argv)
 void	set_data(t_push_swap *data, char **argv)
 {
 	ft_memset(data, 0, sizeof(t_push_swap));
-
 	data->stack_a = get_stack_with_args(argv);
-
-	//test_dbly_lnkd(data->stack_a);
-
 	data->stack_b = NULL;
 
 	test_t_push_swap(data);

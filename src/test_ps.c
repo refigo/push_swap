@@ -6,20 +6,15 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 14:19:23 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 14:36:56 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	test_new_lnkd(t_dbly_lnkd *new)
+void	test_leaks(void)
 {
-	printf("-- test_new_lnkd\n");
-
-	printf("new->num: [%d]\n", new->num);
-
-	printf("-- done new_lnkd\n");
-
+	system("leaks push_swap");
 }
 
 void	test_dbly_lnkd(t_dbly_lnkd *stack)
