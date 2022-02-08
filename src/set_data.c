@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 15:03:41 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 15:20:18 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@
  * some arguments are bigger than an integer
  * there are duplicates
  */
+
+int	check_sign(char *str, int *index)
+{
+	int	ret_flag_minus;
+
+	ret_flag_minus = false;
+	if (str[*index] == '+' || str[*index] == '-')
+	{
+		if (str[*index] == '-')
+			ret_flag_minus = true;
+		(*index)++;
+	}
+	return (ret_flag_minus);
+}
+
 int	get_atoi_valid(char *str)
 {
 	long long	ret_num;
@@ -26,13 +41,8 @@ int	get_atoi_valid(char *str)
 	int			i;
 
 	ret_num = 0;
-	flag_minus = false;
 	i = 0;
-	if (str[i] == '-')
-	{
-		flag_minus = true;
-		i++;
-	}
+	flag_minus = check_sign(str, &i);
 	if (ft_strlen(&(str[i])) == 0)
 		exit_error_msg("Error\n");
 	while (ft_isdigit(str[i]))

@@ -6,11 +6,16 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 15:01:19 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 15:06:40 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_stack(t_push_swap *data)
+{
+
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,9 +24,9 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		exit_error_msg("input error\n");	//todo: remove later
 	set_data(&data, argv);
-	//sort stack();
+	//sort_stack(&data);
 	//clear_stack();
 
-	test_leaks();
+	//test_leaks();
 	return (0);
 }
