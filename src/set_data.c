@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 14:13:00 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 14:15:27 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_atoi_valid(char *str)
 	return ((int)ret_num);
 }
 
-void	check_num_duplicated(t_dbly_lnkd *stack, int num)
+void	check_num_duplicated(t_dbly_lnkd *stack, int num_being_checked)
 {
 	t_dbly_lnkd	*tmp;
 
@@ -57,6 +57,8 @@ void	check_num_duplicated(t_dbly_lnkd *stack, int num)
 	tmp = stack;
 	while (tmp)
 	{
+		if (tmp->num == num_being_checked)
+			exit_error_msg("Error\n");
 		tmp = tmp->next;
 	}
 	return ;
