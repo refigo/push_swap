@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 15:23:54 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 15:54:08 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static t_dbly_lnkd	*get_stack_with_args(char **argv)
 		{
 			num_arg = get_atoi_valid(splitted[j]);
 			check_num_duplicated(ret_stack, num_arg);
-			printf("num_arg: [%d]\n", num_arg);
 			add_new_lnkd_back(&ret_stack, num_arg);
 		}
 		mgo_free_2ptr(splitted);
