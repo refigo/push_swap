@@ -6,7 +6,7 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/08 14:42:12 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/08 15:04:22 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBFT		=	-L./lib/libft -lft
 SRC_PATH	=	./src/
 SRC_LIST	=	main.c \
 				set_data.c \
+				utils_lnkd.c \
 				exit.c \
 				test_ps.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_LIST))

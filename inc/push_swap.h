@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 14:32:55 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 15:01:05 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void	set_data(t_push_swap *data, char **argv);
 // exit.c
 void	exit_error_msg(char *msg);
 void	exit_error_2msg(char *msg1, char *msg2);
+
+// utils_lnkd.c
+t_dbly_lnkd	*make_new_lnkd(int num);
+void		add_new_lnkd_back(t_dbly_lnkd **stack, int num);
 
 // test_ps.c
 void	test_dbly_lnkd(t_dbly_lnkd *stack);

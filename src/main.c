@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 14:42:07 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 15:01:19 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(int argc, char **argv)
 	//sort stack();
 	//clear_stack();
 
-	//test_leaks();
+	test_leaks();
 	return (0);
 }
