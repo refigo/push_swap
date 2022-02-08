@@ -6,13 +6,19 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 12:54:04 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/08 13:00:48 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// todo: implement
+void	exit_error_msg(char *msg)
+{
+	if (msg)
+		ft_putstr_fd(msg, 2);
+	exit(1);
+}
+
 void	exit_error_2msg(char *msg1, char *msg2)
 {
 	if (msg1)
@@ -94,14 +100,18 @@ int	check_valid_and_get_atoi(char *str)
 		flag_minus = true;
 		i++;
 	}
+	if (ft_strlen(&(str[i])) == 0)
+		exit_error_msg("Error\n");
 	while (ft_isdigit(str[i]))
 	{
 		ret_num *= 10;
 		ret_num += str[i] - '0';
 		i++;
 	}
+	if (flag_minus == true)
+		ret_num *= -1;
 	if (str[i] != '\0' || ret_num < INT_MIN || ret_num > INT_MAX)
-		exit_error_2msg("Error\n", NULL);
+		exit_error_msg("Error\n");
 
 	return ((int)ret_num);
 }
@@ -122,7 +132,7 @@ t_dbly_lnkd	*get_stack_with_args(char **argv)
 		splitted = ft_split(argv[i], ' ');
 		//test_splitted(splitted);
 		if (!splitted)
-			exit_error_2msg("malloc failed\n", NULL);
+			exit_error_msg("malloc failed\n");
 		j = -1;
 		while (splitted[++j])
 		{
@@ -156,7 +166,7 @@ int	main(int argc, char **argv)
 	t_push_swap	data;
 
 	if (argc < 2)
-		exit_error_2msg("input error\n", NULL);
+		exit_error_msg("input error\n");
 	set_data(&data, argv);
 	//sort stack();
 	//clear_stack();
