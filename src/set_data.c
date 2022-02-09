@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/08 15:54:08 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 10:32:45 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,14 @@ static t_dbly_lnkd	*get_stack_with_args(char **argv)
 
 void	set_data(t_push_swap *data, char **argv)
 {
+	t_dbly_lnkd	*tmp;
+
 	ft_memset(data, 0, sizeof(t_push_swap));
-	data->stack_a = get_stack_with_args(argv);
-	data->stack_b = NULL;
+	data->a_top = get_stack_with_args(argv);
+	tmp = data->a_top;
+	while (tmp->next)
+		tmp = tmp->next;
+	data->a_bot = tmp;
 
 	test_t_push_swap(data);
 }
