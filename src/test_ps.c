@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 10:35:04 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 10:44:16 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,16 @@ void	test_t_push_swap(t_push_swap *data)
 	printf("data->b_top: [%p]\n", (data->b_top));
 	printf("data->b_bot: [%p]\n", (data->b_bot));
 
-	
-	printf("data->a_top->num: [%d]\n", (data->a_top->num));
-	printf("data->a_bot->num: [%d]\n", (data->a_bot->num));
+	if ((data->a_top) && (data->a_bot))
+	{
+		printf("data->a_top->num: [%d]\n", (data->a_top->num));
+		printf("data->a_bot->num: [%d]\n", (data->a_bot->num));
+	}
+	if ((data->b_top) && (data->b_bot))
+	{
+		printf("data->b_top->num: [%d]\n", (data->b_top->num));
+		printf("data->b_bot->num: [%d]\n", (data->b_bot->num));
+	}
 
 	printf("-- done t_push_swap\n");
 }
