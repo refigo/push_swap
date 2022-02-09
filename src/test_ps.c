@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 10:44:16 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 12:35:38 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	test_leaks(void)
 	system("leaks push_swap");
 }
 
-void	test_dbly_lnkd(t_dbly_lnkd *stack)
+void	test_dbly_lnkd(t_dbly_lnkd *node)
 {
 	t_dbly_lnkd	*tmp;
 
-	if (!stack)
+	if (!node)
 		return ;
 
-	printf("-- test_dbly_lnkd\n");		
+	printf("--- test_dbly_lnkd\n");		
 
-	tmp = stack;
+	tmp = node;
 	while (tmp)
 	{
 		printf("[%d]", tmp->num);
@@ -34,8 +34,8 @@ void	test_dbly_lnkd(t_dbly_lnkd *stack)
 	}
 	printf("\n");
 
-	printf("--- reverse\n");
-	tmp = stack;
+	printf("---- reverse\n");
+	tmp = node;
 	while (tmp->next)
 		tmp = tmp->next;
 	while (tmp)
@@ -45,30 +45,43 @@ void	test_dbly_lnkd(t_dbly_lnkd *stack)
 	}
 	printf("\n");
 
-	printf("-- done dbly_lnkd\n");
+	printf("--- done dbly_lnkd\n");
+}
+
+void	test_t_stack(t_stack *stack)
+{
+	/*
+	if (!(stack->top) || !(stack->bot))
+		return ;
+	*/
+	printf("-- test_t_stack\n");
+
+	printf("stack->top->num: [%d]\n", stack->top->num);
+	printf("stack->bot->num: [%d]\n", stack->bot->num);
+	test_dbly_lnkd(stack->top);
+
+	printf("-- done_t_stack\n");
 }
 
 void	test_t_push_swap(t_push_swap *data)
 {
-	printf("-- test_t_push_swap\n");		
+	printf("- test_t_push_swap\n");		
 
-	printf("data->a_top: [%p]\n", (data->a_top));
-	printf("data->a_bot: [%p]\n", (data->a_bot));
-	printf("data->b_top: [%p]\n", (data->b_top));
-	printf("data->b_bot: [%p]\n", (data->b_bot));
+	printf("data->a: [%p]\n", (data->a));
+	printf("data->b: [%p]\n", (data->b));
 
-	if ((data->a_top) && (data->a_bot))
+	if ((data->a->top) && (data->a->bot))
 	{
-		printf("data->a_top->num: [%d]\n", (data->a_top->num));
-		printf("data->a_bot->num: [%d]\n", (data->a_bot->num));
+		printf("[[data->a]]\n");
+		test_t_stack(data->a);
 	}
-	if ((data->b_top) && (data->b_bot))
+	if ((data->b->top) && (data->b->bot))
 	{
-		printf("data->b_top->num: [%d]\n", (data->b_top->num));
-		printf("data->b_bot->num: [%d]\n", (data->b_bot->num));
+		printf("[[data->b]]\n");
+		test_t_stack(data->b);
 	}
 
-	printf("-- done t_push_swap\n");
+	printf("- done t_push_swap\n");
 }
 
 void	test_mgo()

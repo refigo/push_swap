@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 10:33:48 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 12:36:29 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ typedef struct s_dbly_lnkd
 	void	*next;
 }				t_dbly_lnkd;
 
+typedef struct s_stack
+{
+	t_dbly_lnkd	*top;
+	t_dbly_lnkd	*bot;
+}				t_stack;
+
 typedef struct s_push_swap
 {
-	t_dbly_lnkd	*a_top;
-	t_dbly_lnkd	*a_bot;
-	t_dbly_lnkd	*b_top;
-	t_dbly_lnkd	*b_bot;
+	t_stack	*a;
+	t_stack	*b;
 }				t_push_swap;
 
 // set_data.c
@@ -65,6 +69,7 @@ void		add_new_lnkd_back(t_dbly_lnkd **stack, int num);
 
 // test_ps.c
 void	test_dbly_lnkd(t_dbly_lnkd *stack);
+void	test_t_stack(t_stack *stack);
 void	test_t_push_swap(t_push_swap *data);
 void	test_leaks(void);
 

@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 10:32:45 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 12:34:35 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	get_atoi_valid(char *str)
 	return ((int)ret_num);
 }
 
-static t_dbly_lnkd	*get_stack_with_args(char **argv)
+static t_dbly_lnkd	*get_stack_top_with_args(char **argv)
 {
 	t_dbly_lnkd	*ret_stack;
 	char		**splitted;
@@ -104,14 +104,22 @@ static t_dbly_lnkd	*get_stack_with_args(char **argv)
 
 void	set_data(t_push_swap *data, char **argv)
 {
+	t_stack		*stack_a;
+	t_stack		*stack_b;
 	t_dbly_lnkd	*tmp;
 
 	ft_memset(data, 0, sizeof(t_push_swap));
-	data->a_top = get_stack_with_args(argv);
-	tmp = data->a_top;
+	stack_a = ft_calloc(1, sizeof(t_stack));
+	stack_b = ft_calloc(1, sizeof(t_stack));
+	if (!stack_a || !stack_b)
+		exit_error_msg("Error: malloc failed\n");
+	data->a = stack_a;
+	data->b = stack_b;
+	data->a->top = get_stack_top_with_args(argv);
+	tmp = data->a->top;
 	while (tmp->next)
 		tmp = tmp->next;
-	data->a_bot = tmp;
+	data->a->bot = tmp;
 
 	test_t_push_swap(data);
 }
