@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 14:45:54 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 14:55:02 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ void	test_dbly_lnkd(t_dbly_lnkd *node)
 
 void	test_t_stack(t_stack *stack)
 {
-	/*
 	if (!(stack->top) || !(stack->bot))
+	{
+		printf("-- block test for top and bot in stack\n");
 		return ;
-	*/
+	}
 	printf("-- test_t_stack\n");
 
 	printf("stack->top->num: [%d]\n", stack->top->num);

@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 14:44:22 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 14:58:39 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,17 @@ typedef struct s_push_swap
 // set_data.c
 void	set_data(t_push_swap *data, char **argv);
 
+// sort_stack.c
+
+
+// operate_cmd.c
+void	operate_cmd(char *cmd, t_push_swap *data);
+
 // cmds.c
 void	push_from_to(t_stack *from_stack, t_stack *to_stack);
 void	swap_stack(t_stack *stack);
 void	rotate_stack(t_stack *stack);
 void	reverse_rotate_stack(t_stack *stack);
-
-// operate_cmd.c
-void	operate_cmd(char *cmd, t_push_swap *data);
 
 // utils_lnkd.c
 t_dbly_lnkd	*make_new_lnkd(int num);
@@ -81,6 +84,7 @@ void	exit_error_2msg(char *msg1, char *msg2);
 void	test_dbly_lnkd(t_dbly_lnkd *stack);
 void	test_t_stack(t_stack *stack);
 void	test_t_push_swap(t_push_swap *data);
+void	test_operation_cmds(t_push_swap *data);
 void	test_leaks(void);
 
 #endif
