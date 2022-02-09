@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 13:43:25 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 14:07:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ void	push_from_to(t_stack *from_stack, t_stack *to_stack)
 		(to_stack)->bot = moving;
 	moving->next = (to_stack)->top;
 	(to_stack)->top = moving;
+}
+
+void	swap_stack(t_stack *stack)
+{
+	t_dbly_lnkd	*tmp;
+
+	if (stack->top == NULL || stack->top == stack->bot)
+		return ;
+	tmp = stack->top;
+	stack->top = stack->top->next;
+	tmp->prev = stack->top;
+	tmp->next = stack->top->next;
+	stack->top->prev = NULL;
+	stack->top->next = tmp;
+	if (tmp->next)
+		((t_dbly_lnkd *)(tmp->next))->prev = tmp;
+	else
+		stack->bot = tmp;
 }
 
 void	rotate_stack(t_stack *stack)
@@ -68,6 +86,15 @@ void	operate_cmd(char *cmd, t_push_swap *data)
 		push_from_to(data->a, data->b);
 	else if (ft_strncmp("pb", cmd, 2) == 0)
 		push_from_to(data->a, data->b);
+	else if (ft_strncmp("sa", cmd, 2) == 0)
+		swap_stack(data->a);
+	else if (ft_strncmp("sb", cmd, 2) == 0)
+		swap_stack(data->b);
+	else if (ft_strncmp("ss", cmd, 2) == 0)
+	{
+		swap_stack(data->a);
+		swap_stack(data->b);
+	}
 	else if (ft_strncmp("rra", cmd, 3) == 0)
 		reverse_rotate_stack(data->a);
 	else if (ft_strncmp("rrb", cmd, 3) == 0)
@@ -96,6 +123,16 @@ void	sort_stack(t_push_swap *data)
 	operate_cmd("pb", data);
 
 	ft_putendl_fd("-----------------------After push---------------------", 1);
+	ft_putendl_fd("[[data->a]]", 1);
+	test_t_stack(data->a);
+	ft_putendl_fd("[[data->b]]", 1);
+	test_t_stack(data->b);
+
+	operate_cmd("sa", data);
+	operate_cmd("sb", data);
+	operate_cmd("ss", data);
+
+	ft_putendl_fd("-----------------------After swap---------------------", 1);
 	ft_putendl_fd("[[data->a]]", 1);
 	test_t_stack(data->a);
 	ft_putendl_fd("[[data->b]]", 1);
