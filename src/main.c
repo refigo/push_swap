@@ -6,13 +6,12 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 12:48:15 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 13:05:26 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// todo: no 2ptr
 void	push_from_to(t_stack *from_stack, t_stack *to_stack)
 {
 	t_dbly_lnkd	*moving;
@@ -42,10 +41,25 @@ void	rotate_stack(t_stack *stack)
 	moving = stack->top;
 	stack->top = moving->next;
 	stack->top->prev = NULL;
+	moving->next = NULL;
 	stack->bot->next = moving;
 	moving->prev = stack->bot;
-	moving->next = NULL;
 	stack->bot = moving;
+}
+
+void	reverse_rotate_stack(t_stack *stack)
+{
+	t_dbly_lnkd	*moving;
+
+	if (stack->top == NULL || stack->top == stack->bot)
+		return ;
+	moving = stack->bot;
+	stack->bot = moving->prev;
+	stack->bot->next = NULL;
+	moving->prev = NULL;
+	stack->top->prev = moving;
+	moving->next = stack->top;
+	stack->top = moving;
 }
 
 void	sort_stack(t_push_swap *data)
@@ -54,6 +68,7 @@ void	sort_stack(t_push_swap *data)
 	push_from_to((data->a), (data->b));
 	push_from_to((data->a), (data->b));
 
+	ft_putendl_fd("-----------------------After push---------------------", 1);
 	ft_putendl_fd("[[data->a]]", 1);
 	test_t_stack(data->a);
 	ft_putendl_fd("[[data->b]]", 1);
@@ -64,6 +79,16 @@ void	sort_stack(t_push_swap *data)
 	rotate_stack(data->a);
 	rotate_stack(data->b);
 
+	ft_putendl_fd("-----------------------After rotate---------------------", 1);
+	ft_putendl_fd("[[data->a]]", 1);
+	test_t_stack(data->a);
+	ft_putendl_fd("[[data->b]]", 1);
+	test_t_stack(data->b);
+
+	reverse_rotate_stack(data->a);
+	reverse_rotate_stack(data->b);
+
+	ft_putendl_fd("-----------------------After rrotate---------------------", 1);
 	ft_putendl_fd("[[data->a]]", 1);
 	test_t_stack(data->a);
 	ft_putendl_fd("[[data->b]]", 1);
