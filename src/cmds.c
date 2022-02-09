@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:16:07 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 14:17:26 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 14:41:56 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	swap_stack(t_stack *stack)
 	stack->top->prev = NULL;
 	stack->top->next = tmp;
 	if (tmp->next)
-		((t_dbly_lnkd *)(tmp->next))->prev = tmp;
+		(tmp->next)->prev = tmp;
 	else
 		stack->bot = tmp;
 }

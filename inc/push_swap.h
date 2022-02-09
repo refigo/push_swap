@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 14:17:16 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 14:41:08 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef enum e_bool
 
 typedef struct s_dbly_lnkd
 {
-	int		num;
-	void	*prev;
-	void	*next;
+	int					num;
+	struct s_dbly_lnkd	*prev;
+	struct s_dbly_lnkd	*next;
 }				t_dbly_lnkd;
 
 typedef struct s_stack
