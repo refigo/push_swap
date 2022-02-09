@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 12:35:38 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/09 14:45:54 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,49 @@ void	test_mgo()
 {
 	printf("INT_MIN: [%ld]\n", INT_MIN);
 	printf("INT_MAX: [%d]\n", INT_MAX);
+}
+
+void	test_operation_cmds(t_push_swap *data)
+{
+	operate_cmd("pb", data);
+	operate_cmd("pb", data);
+	operate_cmd("pb", data);
+	operate_cmd("pb", data);
+	operate_cmd("pa", data);
+
+	ft_putendl_fd("-----------------------After push---------------------", 1);
+	ft_putendl_fd("[[data->a]]", 1);
+	test_t_stack(data->a);
+	ft_putendl_fd("[[data->b]]", 1);
+	test_t_stack(data->b);
+
+	operate_cmd("sa", data);
+	operate_cmd("sb", data);
+	operate_cmd("ss", data);
+
+	ft_putendl_fd("-----------------------After swap---------------------", 1);
+	ft_putendl_fd("[[data->a]]", 1);
+	test_t_stack(data->a);
+	ft_putendl_fd("[[data->b]]", 1);
+	test_t_stack(data->b);
+
+	operate_cmd("ra", data);
+	operate_cmd("rb", data);
+	operate_cmd("rr", data);
+
+	ft_putendl_fd("-----------------------After rotate---------------------", 1);
+	ft_putendl_fd("[[data->a]]", 1);
+	test_t_stack(data->a);
+	ft_putendl_fd("[[data->b]]", 1);
+	test_t_stack(data->b);
+
+	operate_cmd("rra", data);
+	operate_cmd("rrb", data);
+	operate_cmd("rrr", data);
+
+	ft_putendl_fd("-----------------------After rrotate---------------------", 1);
+	ft_putendl_fd("[[data->a]]", 1);
+	test_t_stack(data->a);
+	ft_putendl_fd("[[data->b]]", 1);
+	test_t_stack(data->b);
 }
