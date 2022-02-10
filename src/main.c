@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 10:22:34 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 11:12:00 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,46 @@ void	sort_stack_a_two(t_push_swap *data)
 		operate_cmd("sa", data);
 }
 
+// sort_stack_a_only_three.c
+void	operate_cmd_sa_rra(t_push_swap *data)
+{
+	operate_cmd("sa", data);
+	operate_cmd("rra", data);
+}
+
+void	operate_cmd_sa_ra(t_push_swap *data)
+{
+	operate_cmd("sa", data);
+	operate_cmd("ra", data);
+}
+
+void	sort_stack_a_only_three(t_push_swap *data)
+{
+	t_dbly_lnkd	*top;
+	t_dbly_lnkd	*bot;
+
+	if (check_sorted_size(data->a, 3))
+		return ;
+	top = data->a->top;
+	bot = data->a->bot;
+	if ((top->num) > (top->next->num) && (top->num) < (bot->num) \
+			&& (top->next->num) < (bot->num))
+		operate_cmd("sa", data);
+	else if ((top->num) < (top->next->num) && (top->num) > (bot->num) \
+			&& (top->next->num) > (bot->num))
+		operate_cmd("rra", data);
+	else if ((top->num) > (top->next->num) && (top->num) > (bot->num) \
+			&& (top->next->num) < (bot->num))
+		operate_cmd("ra", data);
+	else if ((top->num) > (top->next->num) && (top->num) > (bot->num) \
+			&& (top->next->num) > (bot->num))
+		operate_cmd_sa_rra(data);
+	else if ((top->num) < (top->next->num) && (top->num) < (bot->num) \
+			&& (top->next->num) > (bot->num))
+		operate_cmd_sa_ra(data);
+
+}
+
 void	sort_stack(t_push_swap *data)
 {
 	if (check_sorted_size(data->a, get_stack_size(data->a)))
@@ -59,6 +99,11 @@ void	sort_stack(t_push_swap *data)
 	
 	if (get_stack_size(data->a) == 2)
 		sort_stack_a_two(data);
+	
+	if (get_stack_size(data->a) == 3)
+		sort_stack_a_only_three(data);
+
+	test_t_stack(data->a);
 }
 
 int	main(int argc, char **argv)
