@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 14:23:40 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 15:59:25 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ typedef struct s_push_swap
 	t_stack	*b;
 }				t_push_swap;
 
+
+int	*convert_stack_to_array(t_stack *stack, int size);
+void	set_array_quick_sorted(int *array, int size);
+int	get_mid_num(t_stack *stack, int size);
+
 // set_data.c
 void	set_data(t_push_swap *data, char **argv);
 
@@ -65,9 +70,10 @@ void	set_data(t_push_swap *data, char **argv);
 // sort_stack_a_three.c
 void	sort_stack_a_three(t_push_swap *data);
 
-// sort_stack_a_only_three_two.c
+// sort_stack_a_only.c
+void	sort_stack_a_only_two(t_push_swap *data);
 void	sort_stack_a_only_three(t_push_swap *data);
-void	sort_stack_a_two(t_push_swap *data);
+void	sort_stack_a_only_five(t_push_swap *data);
 
 // operate_cmd.c
 void	operate_cmd(char *cmd, t_push_swap *data);

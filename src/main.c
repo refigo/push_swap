@@ -6,12 +6,13 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 15:21:00 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 15:57:53 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// utils_stack.c?
 int	*convert_stack_to_array(t_stack *stack, int size)
 {
 	int			*ret_array;
@@ -80,6 +81,7 @@ void	set_array_quick_sorted(int *array, int size)
 	}
 }
 
+// utils_stack.c?
 int	get_mid_num(t_stack *stack, int size)
 {
 	int	ret_mid;
@@ -92,29 +94,9 @@ int	get_mid_num(t_stack *stack, int size)
 	return (ret_mid);
 }
 
-void	sort_stack_a_only_five(t_push_swap *data)
-{
-	int	pivot;
-	int	i;
 
-	if (check_sorted_size(data->a, 5))
-		return ;
-	pivot = get_mid_num(data->a, 5);
-	i = -1;
-	while (++i < 5)
-	{
-		if ((data->a->top->num) < pivot)
-			operate_cmd("pb", data);
-		else
-			operate_cmd("ra", data);
-	}
-	sort_stack_a_only_three(data);
-	if ((data->b->top->num) < (data->b->top->next->num))
-		operate_cmd("sb", data);
-	operate_cmd("pa", data);
-	operate_cmd("pa", data);
-}
 
+// sort_stack_a.c
 void	sort_stack_a(t_push_swap *data)
 {
 	int	pivot;
@@ -128,13 +110,14 @@ void	sort_stack(t_push_swap *data)
 	int	size_a;
 
 	size_a = get_stack_size(data->a);
+
 	if (check_sorted_size(data->a, size_a))
 		printf("sorted!\n");
 	else
 		printf("not sorted..\n");
 	
 	if (size_a == 2)
-		sort_stack_a_two(data);
+		sort_stack_a_only_two(data);
 	else if (size_a == 3)
 		sort_stack_a_only_three(data);
 	else if (size_a == 5)
