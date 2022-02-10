@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 14:58:39 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 11:22:25 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	set_data(t_push_swap *data, char **argv);
 
 // sort_stack.c
 
+// sort_stack_a_only_three_two.c
+void	sort_stack_a_only_three(t_push_swap *data);
+void	sort_stack_a_two(t_push_swap *data);
 
 // operate_cmd.c
 void	operate_cmd(char *cmd, t_push_swap *data);
@@ -71,6 +74,10 @@ void	push_from_to(t_stack *from_stack, t_stack *to_stack);
 void	swap_stack(t_stack *stack);
 void	rotate_stack(t_stack *stack);
 void	reverse_rotate_stack(t_stack *stack);
+
+// utils_stack.c
+int	get_stack_size(t_stack *stack);
+int	check_sorted_size(t_stack *stack, int size);
 
 // utils_lnkd.c
 t_dbly_lnkd	*make_new_lnkd(int num);
