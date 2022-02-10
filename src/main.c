@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 15:01:52 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 15:21:00 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,32 @@ int	get_mid_num(t_stack *stack, int size)
 
 	tmp_array = convert_stack_to_array(stack, size);
 	set_array_quick_sorted(tmp_array, size);
-
+	ret_mid = tmp_array[size / 2];
+	free(tmp_array);
 	return (ret_mid);
 }
 
 void	sort_stack_a_only_five(t_push_swap *data)
 {
 	int	pivot;
+	int	i;
 
 	if (check_sorted_size(data->a, 5))
 		return ;
 	pivot = get_mid_num(data->a, 5);
+	i = -1;
+	while (++i < 5)
+	{
+		if ((data->a->top->num) < pivot)
+			operate_cmd("pb", data);
+		else
+			operate_cmd("ra", data);
+	}
+	sort_stack_a_only_three(data);
+	if ((data->b->top->num) < (data->b->top->next->num))
+		operate_cmd("sb", data);
+	operate_cmd("pa", data);
+	operate_cmd("pa", data);
 }
 
 void	sort_stack_a(t_push_swap *data)
