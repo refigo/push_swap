@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 11:22:25 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 14:23:40 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	set_data(t_push_swap *data, char **argv);
 
 // sort_stack.c
 
+// sort_stack_a_three.c
+void	sort_stack_a_three(t_push_swap *data);
+
 // sort_stack_a_only_three_two.c
 void	sort_stack_a_only_three(t_push_swap *data);
 void	sort_stack_a_two(t_push_swap *data);
@@ -93,5 +96,6 @@ void	test_t_stack(t_stack *stack);
 void	test_t_push_swap(t_push_swap *data);
 void	test_operation_cmds(t_push_swap *data);
 void	test_leaks(void);
+void	test_view_array(int *array, int size);
 
 #endif

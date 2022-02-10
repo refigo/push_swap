@@ -6,58 +6,106 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 11:58:35 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 15:01:52 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	operate_cmd_ra_sa_rra(t_push_swap *data)
+int	*convert_stack_to_array(t_stack *stack, int size)
 {
-	operate_cmd("ra", data);
-	operate_cmd("sa", data);
-	operate_cmd("rra", data);
+	int			*ret_array;
+	t_dbly_lnkd	*tmp;
+	int			i;
+
+	// size
+	ret_array = ft_calloc(size, sizeof(int));
+	if (!ret_array)
+		exit_error_msg("Error: malloc failed\n");
+	tmp = stack->top;
+	i = -1;
+	while (++i < size)
+	{
+		ret_array[i] = tmp->num;
+		tmp = tmp->next;
+	}
+	return (ret_array);
 }
 
-static void	operate_cmd_ra_sa_rra_sa(t_push_swap *data)
+static int	get_index_pivot(int *array, int pivot)
 {
-	operate_cmd_ra_sa_rra(data);
-	operate_cmd("sa", data);
+	int	ret_index;
+
+	ret_index = -1;
+	while (array[++ret_index])
+		if (array[ret_index] == pivot)
+			break ;
+	return (ret_index);
 }
 
-static void	operate_cmd_sa_ra_sa_rra(t_push_swap *data)
+static void	partition_array_by_pivot(int *array, int size, int pivot)
 {
-	operate_cmd("sa", data);
-	operate_cmd_ra_sa_rra(data);
+	int	tmp;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = size - 1;
+	while (i < j)
+	{
+		while (array[i] < pivot)
+			i++;
+		while (array[j] > pivot)
+			j--;
+		if (i >= j)
+			break ;
+		tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
 }
 
-static void	operate_cmd_sa_ra_sa_rra_sa(t_push_swap *data)
+void	set_array_quick_sorted(int *array, int size)
 {
-	operate_cmd_sa_ra_sa_rra(data);
-	operate_cmd("sa", data);
+	int	pivot;
+	int	index_pivot;
+
+	pivot = array[size / 2];
+	partition_array_by_pivot(array, size, pivot);
+	if (size > 2)
+	{
+		index_pivot = get_index_pivot(array, pivot);
+		set_array_quick_sorted(array, index_pivot);
+		set_array_quick_sorted(&(array[index_pivot]), size - index_pivot);
+	}
 }
 
-void	sort_stack_a_three(t_push_swap *data)
+int	get_mid_num(t_stack *stack, int size)
 {
-	int	top;
-	int	scnd;
-	int	thrd;
+	int	ret_mid;
+	int	*tmp_array;
 
-	if (check_sorted_size(data->a, 3))
+	tmp_array = convert_stack_to_array(stack, size);
+	set_array_quick_sorted(tmp_array, size);
+
+	return (ret_mid);
+}
+
+void	sort_stack_a_only_five(t_push_swap *data)
+{
+	int	pivot;
+
+	if (check_sorted_size(data->a, 5))
 		return ;
-	top = data->a->top->num;
-	scnd = data->a->top->next->num;
-	thrd = data->a->top->next->next->num;
-	if ((top < scnd) && (top < thrd) && (scnd > thrd))
-		operate_cmd_ra_sa_rra(data);
-	else if ((top > scnd) && (top < thrd) && (scnd < thrd))
-		operate_cmd("sa", data);
-	else if ((top < scnd) && (top > thrd) && (scnd > thrd))
-		operate_cmd_ra_sa_rra_sa(data);
-	else if ((top > scnd) && (top > thrd) && (scnd < thrd))
-		operate_cmd_sa_ra_sa_rra(data);
-	else if ((top > scnd) && (top > thrd) && (scnd > thrd))
-		operate_cmd_sa_ra_sa_rra_sa(data);
+	pivot = get_mid_num(data->a, 5);
+}
+
+void	sort_stack_a(t_push_swap *data)
+{
+	int	pivot;
+
+	pivot = get_mid_num(data->a, get_stack_size(data->a));
+
 }
 
 void	sort_stack(t_push_swap *data)
@@ -74,8 +122,10 @@ void	sort_stack(t_push_swap *data)
 		sort_stack_a_two(data);
 	else if (size_a == 3)
 		sort_stack_a_only_three(data);
+	else if (size_a == 5)
+		sort_stack_a_only_five(data);
 	else if (size_a > 3)
-		sort_stack_a_three(data);
+		sort_stack_a(data);
 
 	test_t_stack(data->a);
 }

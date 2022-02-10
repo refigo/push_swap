@@ -6,11 +6,24 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:43:13 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 11:12:48 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 14:23:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	test_view_array(int *array, int size)
+{
+	int	i;
+
+	printf("--- test_view_array\n");
+
+	i = -1;
+	while (++i < size)
+		printf("ret_array[%d]: [%d]\n", i, array[i]);
+
+	printf("--- done_view_array\n");
+}
 
 void	test_leaks(void)
 {
