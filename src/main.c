@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 10:13:09 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/10 10:22:34 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	get_stack_size(t_stack *stack)
 		ret_size++;
 		tmp = tmp->next;
 	}
-	printf("ret_size: [%d]\n", ret_size);
 	return (ret_size);
 }
 
@@ -42,12 +41,24 @@ int	check_sorted_size(t_stack *stack, int size)
 	return (true);
 }
 
+void	sort_stack_a_two(t_push_swap *data)
+{
+	t_dbly_lnkd	*top;
+
+	top = data->a->top;
+	if ((top->num) > (top->next->num))
+		operate_cmd("sa", data);
+}
+
 void	sort_stack(t_push_swap *data)
 {
 	if (check_sorted_size(data->a, get_stack_size(data->a)))
 		printf("sorted!\n");
 	else
 		printf("not sorted..\n");
+	
+	if (get_stack_size(data->a) == 2)
+		sort_stack_a_two(data);
 }
 
 int	main(int argc, char **argv)
