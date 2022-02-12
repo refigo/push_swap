@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 15:57:53 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 15:08:56 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ int	get_mid_num(t_stack *stack, int size)
 
 
 // sort_stack_a.c
-void	sort_stack_a(t_push_swap *data)
+void	sort_stack_a(t_push_swap *data, int size)
 {
 	int	pivot;
 
+	if (is_sorted_size(data->a, size))
+		return ;
 	pivot = get_mid_num(data->a, get_stack_size(data->a));
 
 }
@@ -111,7 +113,7 @@ void	sort_stack(t_push_swap *data)
 
 	size_a = get_stack_size(data->a);
 
-	if (check_sorted_size(data->a, size_a))
+	if (is_sorted_size(data->a, size_a))
 		printf("sorted!\n");
 	else
 		printf("not sorted..\n");
@@ -123,7 +125,7 @@ void	sort_stack(t_push_swap *data)
 	else if (size_a == 5)
 		sort_stack_a_only_five(data);
 	else if (size_a > 3)
-		sort_stack_a(data);
+		sort_stack_a(data, get_stack_size(data->a));
 
 	test_t_stack(data->a);
 }

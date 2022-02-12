@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:21:50 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 11:21:56 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 15:04:40 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_stack_size(t_stack *stack)
 	return (ret_size);
 }
 
-int	check_sorted_size(t_stack *stack, int size)
+int	is_sorted_size(t_stack *stack, int size)
 {
 	t_dbly_lnkd	*tmp;
 

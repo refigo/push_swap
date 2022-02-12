@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:08:06 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 12:08:24 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 15:07:51 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	sort_stack_a_three(t_push_swap *data)
 	int	scnd;
 	int	thrd;
 
-	if (check_sorted_size(data->a, 3))
+	if (is_sorted_size(data->a, 3))
 		return ;
 	top = data->a->top->num;
 	scnd = data->a->top->next->num;

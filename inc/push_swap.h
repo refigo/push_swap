@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/10 15:59:25 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 15:03:38 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	reverse_rotate_stack(t_stack *stack);
 
 // utils_stack.c
 int	get_stack_size(t_stack *stack);
-int	check_sorted_size(t_stack *stack, int size);
+int	is_sorted_size(t_stack *stack, int size);
 
 // utils_lnkd.c
 t_dbly_lnkd	*make_new_lnkd(int num);
