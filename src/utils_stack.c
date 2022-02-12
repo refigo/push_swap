@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:21:50 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 15:04:40 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 15:45:38 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	is_sorted_size(t_stack *stack, int size)
 	while (tmp->next && (--size))
 	{
 		if ((tmp->num) > (tmp->next->num))
-			return (false);
+			return (FALSE);
 		tmp = tmp->next;
 	}
-	return (true);
+	return (TRUE);
 }

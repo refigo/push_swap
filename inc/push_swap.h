@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 15:03:38 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 15:46:25 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,15 @@ exit
 
 typedef enum e_bool
 {
-	false,
-	true
+	FALSE,
+	TRUE
 }			t_bool;
+
+typedef enum e_pivot
+{
+	SMALL,
+	BIG
+}			t_pivot;
 
 typedef struct s_dbly_lnkd
 {

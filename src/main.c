@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 15:08:56 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 16:27:14 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	*convert_stack_to_array(t_stack *stack, int size)
 	return (ret_array);
 }
 
-static int	get_index_pivot(int *array, int pivot)
+static int	get_index_pivot(int *array, int pivot, int size)
 {
 	int	ret_index;
 
 	ret_index = -1;
-	while (array[++ret_index])
-		if (array[ret_index] == pivot)
+	while (size--)
+		if (array[++ret_index] == pivot)
 			break ;
 	return (ret_index);
 }
@@ -54,9 +54,9 @@ static void	partition_array_by_pivot(int *array, int size, int pivot)
 	j = size - 1;
 	while (i < j)
 	{
-		while (array[i] < pivot)
+		while (pivot > array[i])
 			i++;
-		while (array[j] > pivot)
+		while (pivot < array[j])
 			j--;
 		if (i >= j)
 			break ;
@@ -75,7 +75,7 @@ void	set_array_quick_sorted(int *array, int size)
 	partition_array_by_pivot(array, size, pivot);
 	if (size > 2)
 	{
-		index_pivot = get_index_pivot(array, pivot);
+		index_pivot = get_index_pivot(array, pivot, size);
 		set_array_quick_sorted(array, index_pivot);
 		set_array_quick_sorted(&(array[index_pivot]), size - index_pivot);
 	}
@@ -94,16 +94,34 @@ int	get_mid_num(t_stack *stack, int size)
 	return (ret_mid);
 }
 
+void	set_two_pivot(int pivot[2], t_stack *stack, int size)
+{
+	int	*array;
 
+	array = convert_stack_to_array(stack, size);
+	set_array_quick_sorted(array, size);
+
+	test_view_array(array, size);
+
+	pivot[SMALL] = array[1 * size / 3];
+	pivot[BIG] = array[2 * size / 3];
+
+	printf("pivot[SAMLL]: [%d]\n", pivot[SMALL]);
+	printf("pivot[BIG]: [%d]\n", pivot[BIG]);
+}
 
 // sort_stack_a.c
 void	sort_stack_a(t_push_swap *data, int size)
 {
-	int	pivot;
+	int	pivot[2];
 
+	if (size == 2)
+		return (sort_stack_a_only_two(data));
+	else if (size == 3)
+		return (sort_stack_a_three(data));
 	if (is_sorted_size(data->a, size))
 		return ;
-	pivot = get_mid_num(data->a, get_stack_size(data->a));
+	set_two_pivot(pivot, data->a, size);
 
 }
 
@@ -125,7 +143,7 @@ void	sort_stack(t_push_swap *data)
 	else if (size_a == 5)
 		sort_stack_a_only_five(data);
 	else if (size_a > 3)
-		sort_stack_a(data, get_stack_size(data->a));
+		sort_stack_a(data, size_a);
 
 	test_t_stack(data->a);
 }

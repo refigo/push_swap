@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/09 13:11:15 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/12 16:02:29 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static int	check_sign(char *str, int *index)
 {
 	int	ret_flag_minus;
 
-	ret_flag_minus = false;
+	ret_flag_minus = FALSE;
 	if (str[*index] == '+' || str[*index] == '-')
 	{
 		if (str[*index] == '-')
-			ret_flag_minus = true;
+			ret_flag_minus = TRUE;
 		(*index)++;
 	}
 	return (ret_flag_minus);
@@ -66,7 +66,7 @@ static int	get_atoi_valid(char *str)
 		ret_num += str[i] - '0';
 		i++;
 	}
-	if (flag_minus == true)
+	if (flag_minus == TRUE)
 		ret_num *= -1;
 	if (str[i] != '\0' || ret_num < INT_MIN || ret_num > INT_MAX)
 		exit_error_msg("Error\n");
