@@ -6,13 +6,13 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/10 15:28:34 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/12 17:28:26 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 CC			=	gcc
-#CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 CDEBUG		=	-fsanitize=address -g
 RM			=	rm -rf
 
@@ -26,6 +26,7 @@ SRC_LIST	=	main.c \
 				operate_cmd.c \
 				sort_stack_a_only.c \
 				sort_stack_a_three.c \
+				set_array_quick_sorted.c \
 				utils_stack.c \
 				utils_lnkd.c \
 				exit.c \
