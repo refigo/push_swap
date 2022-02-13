@@ -6,13 +6,11 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:21:19 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 11:28:14 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 13:41:56 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 static void	operate_cmd_rb_sb_rrb(t_push_swap *data)
 {
@@ -33,13 +31,6 @@ static void	operate_cmd_sb_rb_sb_rrb(t_push_swap *data)
 	operate_cmd_rb_sb_rrb(data);
 }
 
-static void	operate_cmd_sb_rb_sb_rrb_sb(t_push_swap *data)
-{
-	operate_cmd("sb", data);
-	operate_cmd_rb_sb_rrb(data);
-	operate_cmd("sb", data);
-}
-
 void	sort_reversely_stack_b_three(t_push_swap *data)
 {
 	int	top;
@@ -52,7 +43,10 @@ void	sort_reversely_stack_b_three(t_push_swap *data)
 	scnd = data->b->top->next->num;
 	thrd = data->b->top->next->next->num;
 	if ((top < scnd) && (top < thrd) && (scnd < thrd))
-		operate_cmd_sb_rb_sb_rrb_sb(data);
+	{
+		operate_cmd_sb_rb_sb_rrb(data);
+		operate_cmd("sb", data);
+	}
 	else if ((top < scnd) && (top < thrd) && (scnd > thrd))
 		operate_cmd_sb_rb_sb_rrb(data);
 	else if ((top > scnd) && (top < thrd) && (scnd < thrd))

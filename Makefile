@@ -6,7 +6,7 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/13 11:29:23 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/13 13:33:17 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRC_LIST	=	main.c \
 				set_data.c \
 				cmds.c \
 				operate_cmd.c \
+				sort_stack_a.c \
+				sort_stack_b.c \
 				sort_stack_a_only.c \
 				sort_stack_a_three.c \
 				sort_reversely_stack_b.c \

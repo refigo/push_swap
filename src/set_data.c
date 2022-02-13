@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 16:02:29 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 13:37:00 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ static t_dbly_lnkd	*get_stack_top_with_args(char **argv)
 		}
 		mgo_free_2ptr(splitted);
 	}
-
-	//test_dbly_lnkd(ret_stack);
 	return (ret_stack);
 }
 
@@ -119,6 +117,4 @@ void	set_data(t_push_swap *data, char **argv)
 	while (tmp->next)
 		tmp = tmp->next;
 	data->a->bot = tmp;
-
-	//test_t_push_swap(data);
 }
