@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:21:50 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 18:18:10 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 10:32:56 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	*convert_stack_to_array(t_stack *stack, int size)
 	return (ret_array);
 }
 
-void	set_two_pivot(int pivot[2], t_stack *stack, int size)
+void	set_two_pivot_in_stack(int pivot[2], t_stack *stack, int size)
 {
 	int	*array;
 

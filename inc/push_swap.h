@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 18:18:08 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 10:33:05 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	get_stack_size(t_stack *stack);
 int	is_sorted_size(t_stack *stack, int size);
 int	*convert_stack_to_array(t_stack *stack, int size);
 int	get_mid_num(t_stack *stack, int size);
-void	set_two_pivot(int pivot[2], t_stack *stack, int size);
+void	set_two_pivot_in_stack(int pivot[2], t_stack *stack, int size);
 
 // utils_lnkd.c
 t_dbly_lnkd	*make_new_lnkd(int num);
