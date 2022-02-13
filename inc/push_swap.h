@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 11:31:14 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 12:51:27 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct s_push_swap
 	t_stack	*b;
 }				t_push_swap;
 
+
+void	sort_stack_a(t_push_swap *data, int size);
 
 int	is_sorted_reversely_size(t_stack *stack, int size);
 
