@@ -6,14 +6,14 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:46 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 10:46:14 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 11:32:44 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // sort_stack_a.c
-static void	sort_min_unit_stack(t_push_swap *data, int size)
+static void	sort_min_unit_stack_a(t_push_swap *data, int size)
 {
 	if (size == 2)
 		sort_stack_a_only_two(data);
@@ -21,7 +21,7 @@ static void	sort_min_unit_stack(t_push_swap *data, int size)
 		sort_stack_a_three(data);
 }
 
-static void	divide_by_pivot_counting_cmd(t_push_swap *data, int size, \
+static void	divide_stack_a_by_pivot_counting_cmd(t_push_swap *data, int size, \
 		int pivot[2], int count[3])
 {
 	while (size--)
@@ -92,6 +92,21 @@ int	is_sorted_reversely_size(t_stack *stack, int size)
 	return (TRUE);
 }
 
+void	push_all_to_stack_a(t_push_swap *data, int size)
+{
+	while (size--)
+		operate_cmd("pa", data);
+}
+
+
+void	sort_reversely_min_unit_stack_b(t_push_swap *data, int size)
+{
+	if (size == 2)
+		sort_reversely_stack_b_two(data);
+	else if (size == 3)
+		sort_reversely_stack_b_three(data);
+}
+
 void	sort_stack_b(t_push_swap *data, int size)
 {
 	int	pivot[2];
@@ -100,12 +115,18 @@ void	sort_stack_b(t_push_swap *data, int size)
 	if (is_sorted_reversely_size(data->a, size))
 	{
 		printf("sorted reversely!\n");
+		push_all_to_stack_a(data, size);
 		return ;
 	}
 	else
 		printf("not sorted reversely..\n");
+	if (size <= 3)
+		return (sort_reversely_min_unit_stack_b(data, size));
 	set_two_pivot_in_stack(pivot, data->b, size);
 	ft_memset(count, 0, 3 * sizeof(int));
+
+	// divide_stack_b_by_pivot_counting_cmd
+	divide_stack_b_by_pivot_counting_cmd(data, size, pivot, count);
 }
 
 // sort_stack_a.c
@@ -117,10 +138,10 @@ void	sort_stack_a(t_push_swap *data, int size)
 	if (is_sorted_size(data->a, size))
 		return ;
 	if (size <= 3)
-		return (sort_min_unit_stack(data, size));
+		return (sort_min_unit_stack_a(data, size));
 	set_two_pivot_in_stack(pivot, data->a, size);
 	ft_memset(count, 0, 3 * sizeof(int));
-	divide_by_pivot_counting_cmd(data, size, pivot, count);
+	divide_stack_a_by_pivot_counting_cmd(data, size, pivot, count);
 	retrieve_big_nums_to_top(data, count);
 
 	// call next sorts recursively

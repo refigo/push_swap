@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 10:33:05 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/13 11:31:14 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_push_swap
 }				t_push_swap;
 
 
+int	is_sorted_reversely_size(t_stack *stack, int size);
+
 void	set_array_quick_sorted(int *array, int size);
 int	get_mid_num(t_stack *stack, int size);
 
@@ -86,6 +88,10 @@ void	sort_stack_a_three(t_push_swap *data);
 void	sort_stack_a_only_two(t_push_swap *data);
 void	sort_stack_a_only_three(t_push_swap *data);
 void	sort_stack_a_only_five(t_push_swap *data);
+
+// sort_reversely_stack_b.c
+void	sort_reversely_stack_b_two(t_push_swap *data);
+void	sort_reversely_stack_b_three(t_push_swap *data);
 
 // operate_cmd.c
 void	operate_cmd(char *cmd, t_push_swap *data);
