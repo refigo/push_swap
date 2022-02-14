@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:27:37 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 12:40:34 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 13:37:07 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	sort_reversely_min_unit_stack_b(t_push_swap *data, int size)
 }
 
 static void	divide_stack_b_by_pivot_counting_cmd(t_push_swap *data, int size, \
-		int pivot[2], int count[3])
+		int pivot[2], int count[2])
 {
 	while (size--)
 	{
@@ -58,7 +58,7 @@ static void	divide_stack_b_by_pivot_counting_cmd(t_push_swap *data, int size, \
 void	sort_stack_b_recur_end_pa_all(t_push_swap *data, int size)
 {
 	int	pivot[2];
-	int	count[3];
+	int	count[2];
 
 	if (is_sorted_reversely_size(data->b, size))
 		return (push_all_to_stack_a(data, size));
@@ -68,7 +68,7 @@ void	sort_stack_b_recur_end_pa_all(t_push_swap *data, int size)
 		return (push_all_to_stack_a(data, size));
 	}
 	set_two_pivot_in_stack(pivot, data->b, size);
-	ft_memset(count, 0, 3 * sizeof(int));
+	ft_memset(count, 0, 2 * sizeof(int));
 	divide_stack_b_by_pivot_counting_cmd(data, size, pivot, count);
 	sort_stack_a_recur(data, size - count[RB] - count[RA]);
 	retrieve_nums_to_top(data, count);

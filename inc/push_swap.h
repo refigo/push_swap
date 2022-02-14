@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 13:33:50 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 13:37:13 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include "libft.h"
 # include <stdlib.h>
-
-// for test
-# include <stdio.h>
 
 /*
 - Allowed functions
@@ -52,7 +49,6 @@ typedef enum e_pivot
 
 typedef enum e_count
 {
-	PA,
 	RA,
 	RB
 }			t_count;	// todo: modify

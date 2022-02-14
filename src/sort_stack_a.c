@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:29:36 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 13:13:56 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 13:36:50 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	sort_min_unit_stack_a(t_push_swap *data, int size)
 }
 
 static void	divide_stack_a_by_pivot_counting_cmd(t_push_swap *data, int size, \
-		int pivot[2], int count[3])
+		int pivot[2], int count[2])
 {
 	while (size--)
 	{
@@ -52,14 +52,14 @@ static void	divide_stack_a_by_pivot_counting_cmd(t_push_swap *data, int size, \
 void	sort_stack_a_recur(t_push_swap *data, int size)
 {
 	int	pivot[2];
-	int	count[3];
+	int	count[2];
 
 	if (is_sorted_size(data->a, size))
 		return ;
 	if (size <= 3)
 		return (sort_min_unit_stack_a(data, size));
 	set_two_pivot_in_stack(pivot, data->a, size);
-	ft_memset(count, 0, 3 * sizeof(int));
+	ft_memset(count, 0, 2 * sizeof(int));
 	divide_stack_a_by_pivot_counting_cmd(data, size, pivot, count);
 	retrieve_nums_to_top(data, count);
 	sort_stack_a_recur(data, count[RA]);
