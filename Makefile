@@ -6,22 +6,20 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/14 13:34:16 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/14 16:11:02 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
-CDEBUG		=	-fsanitize=address -g
+#CDEBUG		=	-fsanitize=address -g
 RM			=	rm -rf
 
 INC_LINK	=	-I./inc/ -I./lib/libft/includes/
 LIBFT		=	-L./lib/libft -lft
 
-SRC_PATH	=	./src/
-SRC_LIST	=	main.c \
-				set_data.c \
+SRC_SHR_LST	=	set_data.c \
 				cmds.c \
 				operate_cmd.c \
 				sort_stack.c \
@@ -37,31 +35,57 @@ SRC_LIST	=	main.c \
 				utils_stack.c \
 				utils_pivot.c \
 				exit.c
+
+SRC_PATH	=	./src/
+SRC_LIST	=	push_swap_main.c
+SRC_LIST	+=	$(SRC_SHR_LST)
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_LIST))
 
 OBJ_PATH	=	./obj/
 OBJ_LIST	=	$(SRC_LIST:.c=.o)
 OBJ			=	$(addprefix $(OBJ_PATH), $(OBJ_LIST))
 
-$(NAME)	:	$(OBJ) libft
-	$(CC) $(CDEBUG) $(CFLAGS) $(OBJ) $(INC_LINK) $(LIBFT) -o $(NAME)
-
 $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) $(CDEBUG) $(CFLAGS) $(INC_LINK) -c $< -o $@
+	@$(CC) $(CFLAGS) $(CDEBUG) $(INC_LINK) -c $< -o $@
+
+B_CHECKER	=	checker_bonus
+B_SRC_PATH	=	./src/
+B_SRC_LIST	=	checker_main.c
+B_SRC_LIST	+=	$(SRC_SHR_LST)
+B_SRC		=	$(addprefix $(B_SRC_PATH), $(B_SRC_LIST))
+
+B_OBJ_PATH	=	./obj/
+B_OBJ_LIST	=	$(B_SRC_LIST:.c=.o)
+B_OBJ		=	$(addprefix $(B_OBJ_PATH), $(B_OBJ_LIST))
+
+$(B_OBJ_PATH)%.o	:	$(B_SRC_PATH)%.c
+	@mkdir $(B_OBJ_PATH) 2> /dev/null || true
+	@$(CC) $(CFLAGS) $(CDEBUG) $(INC_LINK) -c $< -o $@
+
+$(NAME)	:	$(OBJ) libft
+	@$(CC) $(CFLAGS) $(CDEBUG) $(INC_LINK) $(LIBFT) $(OBJ) -o $(NAME)
+	@printf "Made push_swap!\n"
 
 libft	:
 	@make -C ./lib/libft all
 
 all		:	$(NAME)
 
+bonus	:	all $(B_OBJ)
+	@$(CC) $(CFLAGS) $(CDEBUG) $(INC_LINK) $(LIBFT) $(B_OBJ) -o $(B_CHECKER)
+	@printf "Made checker_bonus!\n"
+
 clean	:
 	@make -C ./lib/libft clean
 	@$(RM) $(OBJ_PATH)
+	@printf "Cleaned objs!\n"
 
 fclean	: clean
 	@make -C ./lib/libft fclean
 	@$(RM) $(NAME)
+	@$(RM) $(B_CHECKER)
+	@printf "Cleaned objs and file!\n"
 
 re	:	fclean all
 

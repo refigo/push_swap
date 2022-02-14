@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 13:37:13 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 14:59:25 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ exit
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-typedef enum e_cmd
-{
-	DEACT,
-	ACT
-}			t_cmd;
-
 typedef enum e_bool
 {
 	FALSE,
 	TRUE
 }			t_bool;
+
+typedef enum e_cmd
+{
+	DEACT,
+	ACT
+}			t_cmd;
 
 typedef enum e_pivot
 {
@@ -51,7 +51,7 @@ typedef enum e_count
 {
 	RA,
 	RB
-}			t_count;	// todo: modify
+}			t_count;
 
 typedef struct s_dbly_lnkd
 {
@@ -76,7 +76,7 @@ typedef struct s_push_swap
 void		set_data(t_push_swap *data, char **argv);
 
 // sort_stack.c
-void	sort_stack(t_push_swap *data);
+void		sort_stack(t_push_swap *data);
 
 // sort_stack_a.c
 void		sort_stack_a_recur(t_push_swap *data, int size);
@@ -101,10 +101,10 @@ void		sort_reversely_stack_b_three(t_push_swap *data);
 void		operate_cmd(char *cmd, t_push_swap *data);
 
 // cmds.c
-int		push_from_to(t_stack *from_stack, t_stack *to_stack);
-int		swap_stack(t_stack *stack);
-int		rotate_stack(t_stack *stack);
-int		reverse_rotate_stack(t_stack *stack);
+int			push_from_to(t_stack *from_stack, t_stack *to_stack);
+int			swap_stack(t_stack *stack);
+int			rotate_stack(t_stack *stack);
+int			reverse_rotate_stack(t_stack *stack);
 
 // retrieve_nums_to_top.c
 void		retrieve_nums_to_top(t_push_swap *data, int origin_count[3]);
@@ -132,6 +132,6 @@ void		set_array_quick_sorted(int *array, int size);
 
 // exit.c
 void		exit_error_msg(char *msg);
-void		exit_error_2msg(char *msg1, char *msg2);
+void		exit_error_2msg(char *msg1, char *msg2);	// to remove?
 
 #endif
