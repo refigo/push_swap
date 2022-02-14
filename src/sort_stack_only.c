@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack_a_only_three_two.c                      :+:      :+:    :+:   */
+/*   sort_stack_only.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 11:19:42 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/12 15:07:31 by mgo              ###   ########.fr       */
+/*   Created: 2022/02/14 13:20:23 by mgo               #+#    #+#             */
+/*   Updated: 2022/02/14 13:20:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_stack_a_only_two(t_push_swap *data)
+void	sort_stack_only_two(t_push_swap *data)
 {
 	t_dbly_lnkd	*top;
 
@@ -21,19 +21,7 @@ void	sort_stack_a_only_two(t_push_swap *data)
 		operate_cmd("sa", data);
 }
 
-static void	operate_cmd_sa_rra(t_push_swap *data)
-{
-	operate_cmd("sa", data);
-	operate_cmd("rra", data);
-}
-
-static void	operate_cmd_sa_ra(t_push_swap *data)
-{
-	operate_cmd("sa", data);
-	operate_cmd("ra", data);
-}
-
-void	sort_stack_a_only_three(t_push_swap *data)
+void	sort_stack_only_three(t_push_swap *data)
 {
 	int	top;
 	int	scnd;
@@ -45,7 +33,10 @@ void	sort_stack_a_only_three(t_push_swap *data)
 	scnd = data->a->top->next->num;
 	thrd = data->a->top->next->next->num;
 	if ((top < scnd) && (top < thrd) && (scnd > thrd))
-		operate_cmd_sa_ra(data);
+	{
+		operate_cmd("sa", data);
+		operate_cmd("ra", data);
+	}
 	else if ((top > scnd) && (top < thrd) && (scnd < thrd))
 		operate_cmd("sa", data);
 	else if ((top < scnd) && (top > thrd) && (scnd > thrd))
@@ -53,10 +44,13 @@ void	sort_stack_a_only_three(t_push_swap *data)
 	else if ((top > scnd) && (top > thrd) && (scnd < thrd))
 		operate_cmd("ra", data);
 	else if ((top > scnd) && (top > thrd) && (scnd > thrd))
-		operate_cmd_sa_rra(data);
+	{
+		operate_cmd("sa", data);
+		operate_cmd("rra", data);
+	}
 }
 
-void	sort_stack_a_only_five(t_push_swap *data)
+void	sort_stack_only_five(t_push_swap *data)
 {
 	int	pivot;
 	int	i;
@@ -72,7 +66,7 @@ void	sort_stack_a_only_five(t_push_swap *data)
 		else
 			operate_cmd("ra", data);
 	}
-	sort_stack_a_only_three(data);
+	sort_stack_only_three(data);
 	if ((data->b->top->num) < (data->b->top->next->num))
 		operate_cmd("sb", data);
 	operate_cmd("pa", data);

@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 13:50:32 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 13:33:50 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ exit
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
+typedef enum e_cmd
+{
+	DEACT,
+	ACT
+}			t_cmd;
+
 typedef enum e_bool
 {
 	FALSE,
@@ -49,7 +55,7 @@ typedef enum e_count
 	PA,
 	RA,
 	RB
-}			t_count;
+}			t_count;	// todo: modify
 
 typedef struct s_dbly_lnkd
 {
@@ -70,28 +76,26 @@ typedef struct s_push_swap
 	t_stack	*b;
 }				t_push_swap;
 
-void		sort_stack_a(t_push_swap *data, int size);
-void		sort_stack_b(t_push_swap *data, int size);
-
-void		retrieve_big_nums_to_top(t_push_swap *data, int origin_count[3]);
-
-int			is_sorted_reversely_size(t_stack *stack, int size);
-
-void		set_array_quick_sorted(int *array, int size);
-int			get_mid_num(t_stack *stack, int size);
-
 // set_data.c
 void		set_data(t_push_swap *data, char **argv);
 
 // sort_stack.c
+void	sort_stack(t_push_swap *data);
+
+// sort_stack_a.c
+void		sort_stack_a_recur(t_push_swap *data, int size);
+
+// sort_stack_b.c
+void		sort_stack_b_recur_end_pa_all(t_push_swap *data, int size);
 
 // sort_stack_a_three.c
 void		sort_stack_a_three(t_push_swap *data);
 
 // sort_stack_a_only.c
-void		sort_stack_a_only_two(t_push_swap *data);
-void		sort_stack_a_only_three(t_push_swap *data);
-void		sort_stack_a_only_five(t_push_swap *data);
+void		sort_stack_only_two(t_push_swap *data);	// thinking about only..
+void		sort_stack_only_three(t_push_swap *data);
+void		sort_stack_only_five(t_push_swap *data);
+// rename sort_stack_only???
 
 // sort_reversely_stack_b.c
 void		sort_reversely_stack_b_two(t_push_swap *data);
@@ -101,32 +105,37 @@ void		sort_reversely_stack_b_three(t_push_swap *data);
 void		operate_cmd(char *cmd, t_push_swap *data);
 
 // cmds.c
-void		push_from_to(t_stack *from_stack, t_stack *to_stack);
-void		swap_stack(t_stack *stack);
-void		rotate_stack(t_stack *stack);
-void		reverse_rotate_stack(t_stack *stack);
+int		push_from_to(t_stack *from_stack, t_stack *to_stack);
+int		swap_stack(t_stack *stack);
+int		rotate_stack(t_stack *stack);
+int		reverse_rotate_stack(t_stack *stack);
 
-// utils_stack.c
-int			get_stack_size(t_stack *stack);
-int			is_sorted_size(t_stack *stack, int size);
-int			*convert_stack_to_array(t_stack *stack, int size);
-int			get_mid_num(t_stack *stack, int size);
-void		set_two_pivot_in_stack(int pivot[2], t_stack *stack, int size);
+// retrieve_nums_to_top.c
+void		retrieve_nums_to_top(t_push_swap *data, int origin_count[3]);
+
+// clear_data.c
+void		clear_data(t_push_swap *data);
+void		clear_stack(t_stack *stack);
 
 // utils_lnkd.c
 t_dbly_lnkd	*make_new_lnkd(int num);
 void		add_new_lnkd_back(t_dbly_lnkd **stack, int num);
 
+// utils_stack.c
+int			get_stack_size(t_stack *stack);
+int			is_sorted_size(t_stack *stack, int size);
+int			is_sorted_reversely_size(t_stack *stack, int size);
+
+// utils_pivot.c
+int			get_mid_num(t_stack *stack, int size);
+void		set_two_pivot_in_stack(int pivot[2], t_stack *stack, int size);
+int			*convert_stack_to_array(t_stack *stack, int size);
+
+// set_array_quick_sorted.c
+void		set_array_quick_sorted(int *array, int size);
+
 // exit.c
 void		exit_error_msg(char *msg);
 void		exit_error_2msg(char *msg1, char *msg2);
-
-// test_ps.c
-void		test_dbly_lnkd(t_dbly_lnkd *stack);
-void		test_t_stack(t_stack *stack);
-void		test_t_push_swap(t_push_swap *data);
-void		test_operation_cmds(t_push_swap *data);
-void		test_leaks(void);
-void		test_view_array(int *array, int size);
 
 #endif

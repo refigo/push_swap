@@ -6,7 +6,7 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/13 13:33:17 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/14 13:34:16 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,19 @@ SRC_LIST	=	main.c \
 				set_data.c \
 				cmds.c \
 				operate_cmd.c \
+				sort_stack.c \
 				sort_stack_a.c \
 				sort_stack_b.c \
-				sort_stack_a_only.c \
+				retrieve_nums_to_top.c \
+				sort_stack_only.c \
 				sort_stack_a_three.c \
 				sort_reversely_stack_b.c \
 				set_array_quick_sorted.c \
-				utils_stack.c \
+				clear_data.c \
 				utils_lnkd.c \
-				exit.c \
-				test_ps.c
+				utils_stack.c \
+				utils_pivot.c \
+				exit.c
 SRC			=	$(addprefix $(SRC_PATH), $(SRC_LIST))
 
 OBJ_PATH	=	./obj/
@@ -48,17 +51,17 @@ $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c
 	@$(CC) $(CDEBUG) $(CFLAGS) $(INC_LINK) -c $< -o $@
 
 libft	:
-	make -C ./lib/libft all
+	@make -C ./lib/libft all
 
 all		:	$(NAME)
 
 clean	:
 	@make -C ./lib/libft clean
-	$(RM) $(OBJ_PATH)
+	@$(RM) $(OBJ_PATH)
 
 fclean	: clean
 	@make -C ./lib/libft fclean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re	:	fclean all
 

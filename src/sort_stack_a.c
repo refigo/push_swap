@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:29:36 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 13:43:53 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 13:13:56 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	sort_min_unit_stack_a(t_push_swap *data, int size)
 {
 	if (size == 2)
-		sort_stack_a_only_two(data);
+		sort_stack_only_two(data);
 	else if (size == 3)
 		sort_stack_a_three(data);
 }
@@ -49,33 +49,7 @@ static void	divide_stack_a_by_pivot_counting_cmd(t_push_swap *data, int size, \
 	}
 }
 
-void	retrieve_big_nums_to_top(t_push_swap *data, int origin_count[3])
-{
-	int	tmp_count[3];
-
-	ft_memcpy(tmp_count, origin_count, 3 * sizeof(int));
-	while ((tmp_count[RA] > 0) || (tmp_count[RB] > 0))
-	{
-		if ((tmp_count[RA] > 0) && (tmp_count[RB] > 0))
-		{
-			operate_cmd("rrr", data);
-			tmp_count[RA]--;
-			tmp_count[RB]--;
-		}
-		else if (tmp_count[RA] > 0)
-		{
-			operate_cmd("rra", data);
-			tmp_count[RA]--;
-		}
-		else if (tmp_count[RB] > 0)
-		{
-			operate_cmd("rrb", data);
-			tmp_count[RB]--;
-		}
-	}
-}
-
-void	sort_stack_a(t_push_swap *data, int size)
+void	sort_stack_a_recur(t_push_swap *data, int size)
 {
 	int	pivot[2];
 	int	count[3];
@@ -87,8 +61,8 @@ void	sort_stack_a(t_push_swap *data, int size)
 	set_two_pivot_in_stack(pivot, data->a, size);
 	ft_memset(count, 0, 3 * sizeof(int));
 	divide_stack_a_by_pivot_counting_cmd(data, size, pivot, count);
-	retrieve_big_nums_to_top(data, count);
-	sort_stack_a(data, count[RA]);
-	sort_stack_b(data, count[RB]);
-	sort_stack_b(data, size - count[RA] - count[RB]);
+	retrieve_nums_to_top(data, count);
+	sort_stack_a_recur(data, count[RA]);
+	sort_stack_b_recur_end_pa_all(data, count[RB]);
+	sort_stack_b_recur_end_pa_all(data, size - count[RA] - count[RB]);
 }

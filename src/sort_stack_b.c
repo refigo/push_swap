@@ -6,25 +6,11 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:27:37 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 13:44:29 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/14 12:40:34 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	is_sorted_reversely_size(t_stack *stack, int size)
-{
-	t_dbly_lnkd	*tmp;
-
-	tmp = stack->top;
-	while (tmp->next && (--size))
-	{
-		if ((tmp->num) < (tmp->next->num))
-			return (FALSE);
-		tmp = tmp->next;
-	}
-	return (TRUE);
-}
 
 static void	push_all_to_stack_a(t_push_swap *data, int size)
 {
@@ -69,7 +55,7 @@ static void	divide_stack_b_by_pivot_counting_cmd(t_push_swap *data, int size, \
 	}
 }
 
-void	sort_stack_b(t_push_swap *data, int size)
+void	sort_stack_b_recur_end_pa_all(t_push_swap *data, int size)
 {
 	int	pivot[2];
 	int	count[3];
@@ -84,8 +70,8 @@ void	sort_stack_b(t_push_swap *data, int size)
 	set_two_pivot_in_stack(pivot, data->b, size);
 	ft_memset(count, 0, 3 * sizeof(int));
 	divide_stack_b_by_pivot_counting_cmd(data, size, pivot, count);
-	sort_stack_a(data, size - count[RB] - count[RA]);
-	retrieve_big_nums_to_top(data, count);
-	sort_stack_a(data, count[RA]);
-	sort_stack_b(data, count[RB]);
+	sort_stack_a_recur(data, size - count[RB] - count[RA]);
+	retrieve_nums_to_top(data, count);
+	sort_stack_a_recur(data, count[RA]);
+	sort_stack_b_recur_end_pa_all(data, count[RB]);
 }
