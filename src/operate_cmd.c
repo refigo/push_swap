@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:10:49 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/15 13:22:42 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 14:49:09 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,27 @@ static int	reverse_rotate_both_stack(t_push_swap *data)
 void	move_cmd_gate_and_set_activation(char *cmd, t_push_swap *data, \
 		int *activation)
 {
-	if (ft_strncmp("pa", cmd, 2) == 0)
+	if (mgo_strcmp("pa", cmd) == 0)
 		*activation = push_from_to(data->b, data->a);
-	else if (ft_strncmp("pb", cmd, 2) == 0)
+	else if (mgo_strcmp("pb", cmd) == 0)
 		*activation = push_from_to(data->a, data->b);
-	else if (ft_strncmp("sa", cmd, 2) == 0)
+	else if (mgo_strcmp("sa", cmd) == 0)
 		*activation = swap_stack(data->a);
-	else if (ft_strncmp("sb", cmd, 2) == 0)
+	else if (mgo_strcmp("sb", cmd) == 0)
 		*activation = swap_stack(data->b);
-	else if (ft_strncmp("ss", cmd, 2) == 0)
+	else if (mgo_strcmp("ss", cmd) == 0)
 		*activation = swap_both_stack(data);
-	else if (ft_strncmp("rra", cmd, 3) == 0)
+	else if (mgo_strcmp("rra", cmd) == 0)
 		*activation = reverse_rotate_stack(data->a);
-	else if (ft_strncmp("rrb", cmd, 3) == 0)
+	else if (mgo_strcmp("rrb", cmd) == 0)
 		*activation = reverse_rotate_stack(data->b);
-	else if (ft_strncmp("rrr", cmd, 3) == 0)
+	else if (mgo_strcmp("rrr", cmd) == 0)
 		*activation = reverse_rotate_both_stack(data);
-	else if (ft_strncmp("ra", cmd, 2) == 0)
+	else if (mgo_strcmp("ra", cmd) == 0)
 		*activation = rotate_stack(data->a);
-	else if (ft_strncmp("rb", cmd, 2) == 0)
+	else if (mgo_strcmp("rb", cmd) == 0)
 		*activation = rotate_stack(data->b);
-	else if (ft_strncmp("rr", cmd, 2) == 0)
+	else if (mgo_strcmp("rr", cmd) == 0)
 		*activation = rotate_both_stack(data);
 }
 

@@ -6,7 +6,7 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 10:22:57 by mgo               #+#    #+#              #
-#    Updated: 2022/02/14 13:22:10 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/15 14:49:41 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,8 @@ SRC_LIST	=	ft_atoi.c \
 				ft_lstsize.c \
 				get_next_line.c \
 				get_next_line_utils.c \
-				mgo_free.c
+				mgo_free.c \
+				mgo_strcmp.c
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_LIST))
 
 OBJ_DIR		=	./objects/
