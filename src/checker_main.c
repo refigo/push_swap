@@ -6,32 +6,11 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:37:31 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 16:31:02 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 14:12:51 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// for test
-#include <stdio.h>
-
-void	test_view_t_list(t_list *to_view)
-{
-	t_list	*tmp;
-	char	*tmp_cont;
-	int		i;
-
-	tmp = to_view;
-	i = 0;
-	while (tmp)
-	{
-		tmp_cont = tmp->content;
-		printf("list_cont[%d]: [%s]\n", i, tmp_cont);
-		tmp = tmp->next;
-		i++;
-	}
-}
-// test endline
 
 int	is_right_instruction(char *inst)
 {
@@ -55,46 +34,50 @@ void	get_and_set_instructions(t_list **instructions)
 {
 	t_list	*each_inst;
 	char	*each_line;
+	int		status_gnl;
 
 	*instructions = NULL;
-	each_line = NULL;
-	while (get_next_line(0, &each_line) && (each_line != NULL))
+	status_gnl = get_next_line(0, &each_line);
+	while (status_gnl)
 	{
 		if (!is_right_instruction(each_line))
 			exit_error_msg("Error\n");
 		each_inst = ft_lstnew(each_line);
 		ft_lstadd_back(instructions, each_inst);
-		each_line = NULL;
+		status_gnl = get_next_line(0, &each_line);
 	}
-	test_view_t_list(*instructions);
+	free(each_line);
 }
 
-int		operate_instruction(t_push_swap *data, char *inst)
-{
-	if (is_right_instruction(inst))
-	{
-		operate_cmd(inst, data);
-		return (TRUE);
-	}
-	else
-		return (FALSE);
-
-}
-
-void	check_sorting_instructions(t_push_swap *data, t_list *instructions)
+void	check_instructions_sorting(t_push_swap *data, t_list *instructions)
 {
 	t_list	*current;
-	int		status_inst;
 
+	data->is_checker = TRUE;
 	current = instructions;
 	while (current)
 	{
-		status_inst = operate_instruction(data, current->content);
-		if (status_inst == FALSE)
-			exit_error_msg("KO\n");
+		operate_cmd(current->content, data);
 		current = current->next;
 	}
-	ft_putendl_fd("OK\n", 1);
+	if (is_sorted_size(data->a, get_stack_size(data->a)) \
+			&& get_stack_size(data->b) == 0)
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
+}
+
+void	clear_instructions(t_list **instructions)
+{
+	t_list	*tmp;
+
+	while ((*instructions))
+	{
+		free((*instructions)->content);
+		tmp = (*instructions)->next;
+		free(*instructions);
+		(*instructions) = tmp;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -102,15 +85,12 @@ int	main(int argc, char **argv)
 	t_push_swap	data;
 	t_list		*instructions;
 
-	printf("checker: hello world\n");
-
 	if (argc < 2)
 		exit(0);
 	set_data(&data, argv);
 	get_and_set_instructions(&instructions);
-	check_sorting_instructions(&data, instructions);
-	// clear_data
-	// clear_instructions
-	//system("leaks checker_bonus");
+	check_instructions_sorting(&data, instructions);
+	clear_data(&data);
+	clear_instructions(&instructions);
 	return (0);
 }

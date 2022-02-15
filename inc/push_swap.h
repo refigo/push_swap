@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 14:59:25 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 13:22:01 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_push_swap
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		is_checker;
 }				t_push_swap;
 
 // set_data.c

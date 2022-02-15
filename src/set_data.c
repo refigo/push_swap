@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/13 13:37:00 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 13:20:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ void	set_data(t_push_swap *data, char **argv)
 	while (tmp->next)
 		tmp = tmp->next;
 	data->a->bot = tmp;
+	data->is_checker = FALSE;
 }

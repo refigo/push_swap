@@ -6,7 +6,7 @@
 #    By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:39:21 by mgo               #+#    #+#              #
-#    Updated: 2022/02/14 16:11:02 by mgo              ###   ########.fr        #
+#    Updated: 2022/02/15 14:08:03 by mgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(CDEBUG) $(INC_LINK) -c $< -o $@
 
-B_CHECKER	=	checker_bonus
+B_CHECKER	=	checker
 B_SRC_PATH	=	./src/
 B_SRC_LIST	=	checker_main.c
 B_SRC_LIST	+=	$(SRC_SHR_LST)

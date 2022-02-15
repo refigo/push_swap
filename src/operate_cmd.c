@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:10:49 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 13:29:52 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 13:22:42 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	operate_cmd(char *cmd, t_push_swap *data)
 
 	activation = DEACT;
 	move_cmd_gate_and_set_activation(cmd, data, &activation);
-	if (activation == ACT)
+	if ((activation == ACT) && (data->is_checker == FALSE))
 		ft_putendl_fd(cmd, 1);
 }
