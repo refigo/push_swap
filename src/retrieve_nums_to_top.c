@@ -6,17 +6,17 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:48:26 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/14 11:48:44 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 16:53:45 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	retrieve_nums_to_top(t_push_swap *data, int origin_count[3])
+void	retrieve_nums_to_top(t_push_swap *data, int origin_count[2])
 {
-	int	tmp_count[3];
+	int	tmp_count[2];
 
-	ft_memcpy(tmp_count, origin_count, 3 * sizeof(int));
+	ft_memcpy(tmp_count, origin_count, 2 * sizeof(int));
 	while ((tmp_count[RA] > 0) || (tmp_count[RB] > 0))
 	{
 		if ((tmp_count[RA] > 0) && (tmp_count[RB] > 0))

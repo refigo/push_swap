@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/15 16:45:36 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 16:58:15 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ void		sort_stack_b_recur_end_pa_all(t_push_swap *data, int size);
 // sort_stack_a_three.c
 void		sort_stack_a_three(t_push_swap *data);
 
-// sort_stack_a_only.c
+// sort_stack_only.c
 void		sort_stack_only_two(t_push_swap *data);
 void		sort_stack_only_three(t_push_swap *data);
+void		sort_stack_only_four(t_push_swap *data);
 void		sort_stack_only_five(t_push_swap *data);
-// rename sort_stack_only???
 
 // sort_reversely_stack_b.c
 void		sort_reversely_stack_b_two(t_push_swap *data);
@@ -97,7 +97,7 @@ int			rotate_stack(t_stack *stack);
 int			reverse_rotate_stack(t_stack *stack);
 
 // retrieve_nums_to_top.c
-void		retrieve_nums_to_top(t_push_swap *data, int origin_count[3]);
+void		retrieve_nums_to_top(t_push_swap *data, int origin_count[2]);
 
 // clear_data.c
 void		clear_data(t_push_swap *data);

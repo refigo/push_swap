@@ -6,19 +6,11 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:08:09 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/15 13:20:30 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 16:55:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
- * "Error\n" on the standard error
- *
- * some arguments aren't integers
- * some arguments are bigger than an integer
- * there are duplicates
- */
 
 static void	check_num_duplicated(t_dbly_lnkd *stack, int num_being_checked)
 {
