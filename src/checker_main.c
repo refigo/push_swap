@@ -6,31 +6,49 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:37:31 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/15 14:12:51 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 14:45:30 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_right_instruction(char *inst)
+int	mgo_strcmp(const char *s1, const char *s2)
 {
-	if ((ft_strncmp("pa", inst, 2) == 0) || \
-			(ft_strncmp("pb", inst, 2) == 0) || \
-			(ft_strncmp("sa", inst, 2) == 0) || \
-			(ft_strncmp("sb", inst, 2) == 0) || \
-			(ft_strncmp("ss", inst, 2) == 0) || \
-			(ft_strncmp("rra", inst, 3) == 0) || \
-			(ft_strncmp("rrb", inst, 3) == 0) || \
-			(ft_strncmp("rrr", inst, 3) == 0) || \
-			(ft_strncmp("ra", inst, 2) == 0) || \
-			(ft_strncmp("rb", inst, 2) == 0) || \
-			(ft_strncmp("rr", inst, 2) == 0))
+	unsigned char	*uc_s1;
+	unsigned char	*uc_s2;
+	int				i;
+
+	uc_s1 = (unsigned char *)s1;
+	uc_s2 = (unsigned char *)s2;
+	i = 0;
+	while (uc_s1[i] || uc_s2[i])
+	{
+		if (uc_s1[i] != uc_s2[i])
+			return (uc_s1[i] - uc_s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+static int	is_right_instruction(char *inst)
+{
+	if ((mgo_strcmp("pa", inst) == 0) || \
+			(mgo_strcmp("pb", inst) == 0) || \
+			(mgo_strcmp("sa", inst) == 0) || \
+			(mgo_strcmp("sb", inst) == 0) || \
+			(mgo_strcmp("ss", inst) == 0) || \
+			(mgo_strcmp("rra", inst) == 0) || \
+			(mgo_strcmp("rrb", inst) == 0) || \
+			(mgo_strcmp("rrr", inst) == 0) || \
+			(mgo_strcmp("ra", inst) == 0) || \
+			(mgo_strcmp("rb", inst) == 0) || \
+			(mgo_strcmp("rr", inst) == 0))
 		return (TRUE);
 	else
 		return (FALSE);
 }
 
-void	get_and_set_instructions(t_list **instructions)
+static void	get_and_set_instructions(t_list **instructions)
 {
 	t_list	*each_inst;
 	char	*each_line;
@@ -49,7 +67,7 @@ void	get_and_set_instructions(t_list **instructions)
 	free(each_line);
 }
 
-void	check_instructions_sorting(t_push_swap *data, t_list *instructions)
+static void	check_instructions_sorting(t_push_swap *data, t_list *instructions)
 {
 	t_list	*current;
 
@@ -67,7 +85,7 @@ void	check_instructions_sorting(t_push_swap *data, t_list *instructions)
 		ft_putendl_fd("KO", 1);
 }
 
-void	clear_instructions(t_list **instructions)
+static void	clear_instructions(t_list **instructions)
 {
 	t_list	*tmp;
 
