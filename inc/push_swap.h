@@ -6,7 +6,7 @@
 /*   By: mgo <mgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:05:35 by mgo               #+#    #+#             */
-/*   Updated: 2022/02/15 13:22:01 by mgo              ###   ########.fr       */
+/*   Updated: 2022/02/15 16:42:02 by mgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 
 # include "libft.h"
 # include <stdlib.h>
-
-/*
-- Allowed functions
-
-write
-read
-malloc
-free
-exit
-*/
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -89,7 +79,7 @@ void		sort_stack_b_recur_end_pa_all(t_push_swap *data, int size);
 void		sort_stack_a_three(t_push_swap *data);
 
 // sort_stack_a_only.c
-void		sort_stack_only_two(t_push_swap *data);	// thinking about only..
+void		sort_stack_only_two(t_push_swap *data);
 void		sort_stack_only_three(t_push_swap *data);
 void		sort_stack_only_five(t_push_swap *data);
 // rename sort_stack_only???
@@ -133,6 +123,5 @@ void		set_array_quick_sorted(int *array, int size);
 
 // exit.c
 void		exit_error_msg(char *msg);
-void		exit_error_2msg(char *msg1, char *msg2);	// to remove?
 
 #endif
